@@ -1,8 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import globalReducer from "../slices/globalSlice";
+import nameReducer from "../slices/nameSlice";
+import dataReducer from "../slices/dataSlice";
 
 const rootReducer = combineReducers({
-  globalReducer: globalReducer,
+  globalReducer: nameReducer,
+  dataReducer: dataReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

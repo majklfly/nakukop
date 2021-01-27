@@ -1,5 +1,34 @@
 import React from "react";
 
-export const GoodsContainer: React.FC = () => {
-  return <h1>Hello World</h1>;
+import { Acc } from "../components/Accordion";
+
+import styled from "styled-components";
+
+import { RootState } from "../redux/reducers/rootReducer";
+import { useSelector } from "react-redux";
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+interface props {}
+
+export const GoodsContainer: React.FC<props> = (props) => {
+  const { data } = useSelector((state: RootState) => state.globalReducer);
+
+  return (
+    <Container>
+      {data.res[1] && <Acc goods={data.res[1]} id={1} />}
+      {data.res[2] && <Acc goods={data.res[2]} id={2} />}
+      {data.res[5] && <Acc goods={data.res[5]} id={5} />}
+      {data.res[8] && <Acc goods={data.res[8]} id={8} />}
+      {data.res[10] && <Acc goods={data.res[10]} id={10} />}
+      {data.res[15] && <Acc goods={data.res[15]} id={15} />}
+    </Container>
+  );
 };
