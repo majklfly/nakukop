@@ -22,7 +22,7 @@ const MainContainer = styled(Accordion)`
 `;
 
 interface props {
-  goods: {
+  mapping: {
     G?: string;
     B?: object;
   };
@@ -62,11 +62,11 @@ export const Acc: React.FC<props> = (props) => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography>{props.goods.G}</Typography>
+        <Typography>{props.mapping.G}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <CustomTypography>
-          <CustomList data={goods} />
+          <CustomList data={goods} mapping={props.mapping.B} />
         </CustomTypography>
       </AccordionDetails>
     </MainContainer>

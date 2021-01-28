@@ -9,11 +9,16 @@ import { useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 100%;
+  height: 70vh;
+  overflow: scroll;
   max-width: 1500px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 interface props {}
@@ -23,12 +28,12 @@ export const GoodsContainer: React.FC<props> = (props) => {
 
   return (
     <Container>
-      {data.res[1] && <Acc goods={data.res[1]} id={1} />}
-      {data.res[2] && <Acc goods={data.res[2]} id={2} />}
-      {data.res[5] && <Acc goods={data.res[5]} id={5} />}
-      {data.res[8] && <Acc goods={data.res[8]} id={8} />}
-      {data.res[10] && <Acc goods={data.res[10]} id={10} />}
-      {data.res[15] && <Acc goods={data.res[15]} id={15} />}
+      {data.res[1] && <Acc mapping={data.res[1]} id={1} />}
+      {data.res[2] && <Acc mapping={data.res[2]} id={2} />}
+      {data.res[5] && <Acc mapping={data.res[5]} id={5} />}
+      {data.res[8] && <Acc mapping={data.res[8]} id={8} />}
+      {data.res[10] && <Acc mapping={data.res[10]} id={10} />}
+      {data.res[15] && <Acc mapping={data.res[15]} id={15} />}
     </Container>
   );
 };

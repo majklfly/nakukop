@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import { GoodsContainer } from "./containers/GoodsContainer";
+import { ShoppingCartContainer } from "./containers/ShoppingCartContainer";
 
 import { useDispatch } from "react-redux";
 import { updateGoods } from "./redux/slices/nameSlice";
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <MainContainer>
+      <ShoppingCartContainer />
       <GoodsContainer />
     </MainContainer>
   );
