@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 import { CardSlider } from "../components/CardSlider";
-import { CartSummary } from "../components/CartSummary";
 
 const Container = styled.section`
   width: 90vw;
+  max-width: 1000px;
   border-radius: 15px;
   height: 15vh;
   min-height: 150px;
@@ -21,7 +21,6 @@ export const ShoppingCartContainer = () => {
   return (
     <Container>
       <CardSlider />
-      <CartSummary />
     </Container>
   );
 };

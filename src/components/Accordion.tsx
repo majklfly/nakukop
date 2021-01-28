@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
-import { useSelector } from "react-redux";
 
 import styled from "styled-components";
 
@@ -27,33 +25,11 @@ interface props {
     B?: object;
   };
   id: number;
+  goods: object[];
 }
 
-interface item {
-  B: boolean;
-  C: number;
-  CV: null;
-  G: number;
-  P: number;
-  Pl: null;
-  T: number;
-}
-
-export const Acc: React.FC<props> = (props) => {
+export const Acc: React.FC<props> = ({ mapping, goods }) => {
   // Accordion containing list of relevant goods,
-  const [goods, setGoods] = useState<object[]>([]);
-
-  const { data } = useSelector((state: any) => state.dataReducer);
-
-  useEffect(() => {
-    if (data.data) {
-      data.data.Value.Goods.forEach((item: item) => {
-        if (item.G === props.id) {
-          setGoods((prev) => [...prev, item]);
-        }
-      });
-    }
-  }, [data]);
 
   return (
     <MainContainer>
@@ -62,11 +38,11 @@ export const Acc: React.FC<props> = (props) => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography>{props.mapping.G}</Typography>
+        <Typography>{mapping.G}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <CustomTypography>
-          <CustomList data={goods} mapping={props.mapping.B} />
+          <CustomList data={goods} mapping={mapping.B} />
         </CustomTypography>
       </AccordionDetails>
     </MainContainer>
