@@ -32,41 +32,29 @@ const Container = styled.div`
   }
 `;
 
-interface card {
-  item: string[];
-  amount: number;
-}
-
 interface props {}
 
 export const CardSlider: React.FC<props> = () => {
-  const [cards, setCards] = useState<any>({});
-  const { cartItems } = useSelector((state: RootState) => state.cartReducer);
+  const [cards, setCards] = useState<any[]>([]);
+  const state = useSelector((state: RootState) => state.cartReducer);
 
   useEffect(() => {
     // maping over redux store, creating a object of inuque objects and amount, updading state with new object
-    if (cartItems) {
-      let cardsObject: any = {};
-      cartItems.map((item) => {
-        const id = item[1];
-        if (cardsObject[id]) {
-          const updatedValue = (cardsObject[id].amount += 1);
-          cardsObject[id] = { item, amount: updatedValue };
-        } else {
-          cardsObject[id] = { item, amount: 1 };
-        }
+    if (state) {
+      setCards([]);
+      Object.keys(state).forEach((key) => {
+        const item = state[key];
+        setCards((prev) => [...prev, item]);
       });
-      setCards(cardsObject);
     }
-  }, [cartItems]);
+  }, [state]);
 
   return (
     <Container>
-      {Object.keys(cards).map((key) => {
-        console.log(cards[key].item[0]);
-        return (
-          <CartCard name={cards[key].item[0]} amount={cards[key].amount} />
-        );
+      {cards.map((item) => {
+        if (item.items && item.amount > 0) {
+          return <CartCard item={item.items} amount={item.amount} />;
+        }
       })}
     </Container>
   );

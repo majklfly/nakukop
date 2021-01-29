@@ -8,7 +8,6 @@ const dataSlice = createSlice({
   reducers: {
     getData(state: any, action: PayloadAction<any>) {
       const data = action.payload;
-      console.log("first fetch", data);
       data.data.Value.Goods.forEach((item: any) => {
         const id = item.T;
         state[id] = item;
@@ -24,11 +23,18 @@ const dataSlice = createSlice({
       state[id].G = info.good[5];
       state[id].Pl = info.good[6];
       state[id].T = info.good[7];
-      console.log("id", id);
+    },
+    incrementStock(state, action: PayloadAction<any>) {
+      const data = action.payload;
+      const id = data.item[7];
+      console.log(id);
+      if (state[id]) {
+        state[id].P = state[id].P + 1;
+      }
     },
   },
 });
 
-export const { getData, updateData } = dataSlice.actions;
+export const { getData, updateData, incrementStock } = dataSlice.actions;
 
 export default dataSlice.reducer;

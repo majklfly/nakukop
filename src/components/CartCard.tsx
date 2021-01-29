@@ -3,7 +3,24 @@ import styled from "styled-components";
 
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
+
+import { RemoveButton } from "./removeButton";
+
+const DataContainer = styled.div`
+  height: 60%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+const ButtonContainer = styled.div`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const CustomCard = styled(Card)`
   width: 100px;
@@ -12,6 +29,8 @@ const CustomCard = styled(Card)`
   padding-bottom: 2%;
   height: 80%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 3%;
   border-radius: 10px;
@@ -22,15 +41,20 @@ const CustomTypography = styled.h4`
 `;
 
 interface props {
-  name: string;
+  item: any[];
   amount: number;
 }
 
-export const CartCard: React.FC<props> = ({ name, amount }) => {
+export const CartCard: React.FC<props> = ({ item, amount }) => {
   return (
     <CustomCard>
-      <CustomTypography>{name}</CustomTypography>
-      <CardActions>{amount}x</CardActions>
+      <DataContainer>
+        <CustomTypography>{item}</CustomTypography>
+        <CardActions>{amount}x</CardActions>
+      </DataContainer>
+      <ButtonContainer>
+        <RemoveButton item={item} />
+      </ButtonContainer>
     </CustomCard>
   );
 };

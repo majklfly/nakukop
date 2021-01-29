@@ -47,7 +47,8 @@ export const CustomList: React.FC<props> = ({ data, mapping }) => {
       setItems([]);
       data.forEach((item: item) => {
         const value = item.T;
-        if (value && mapping[value]) {
+        const stock = item.P;
+        if (value && mapping[value] && stock && stock > 0) {
           setItems((prev) => [
             ...prev,
             [
