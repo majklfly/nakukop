@@ -2,8 +2,7 @@
     "name": "nakukop",
     "version": "0.1.0",
     "engines": {
-        "node": "14.15.4",
-        "npm": "6.0.0"
+        "node": "12.8.3"
     },
     "private": true,
     "dependencies": {
@@ -54,7 +53,6 @@
         "@types/react": "^16.14.2",
         "@types/react-redux": "^7.1.16",
         "@types/styled-components": "^5.1.7",
-        "@types/webpack-env": "^1.16.0",
-        "graceful-fs": "^4.2.4"
+        "@types/webpack-env": "^1.16.0"
     }
 }
