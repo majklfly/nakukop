@@ -30,7 +30,7 @@ export const CartCard: React.FC<props> = ({ name, amount }) => {
   return (
     <CustomCard>
       <CustomTypography>{name}</CustomTypography>
-      <CardActions>{amount} x</CardActions>
+      <CardActions>{amount}x</CardActions>
     </CustomCard>
   );
 };
