@@ -23,15 +23,14 @@ const CustomTypography = styled.h4`
 
 interface props {
   name: string;
+  amount: number;
 }
 
-export const CartCard: React.FC<props> = ({ name }) => {
+export const CartCard: React.FC<props> = ({ name, amount }) => {
   return (
     <CustomCard>
       <CustomTypography>{name}</CustomTypography>
-      <CardActions>
-        <Button size="small">Remove</Button>
-      </CardActions>
+      <CardActions>{amount}</CardActions>
     </CustomCard>
   );
 };

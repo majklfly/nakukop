@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import styled from "styled-components";
 
@@ -32,21 +32,40 @@ const Container = styled.div`
   }
 `;
 
+interface card {
+  item: string[];
+  amount: number;
+}
+
 interface props {}
 
 export const CardSlider: React.FC<props> = () => {
+  const [cards, setCards] = useState<any>({});
   const { cartItems } = useSelector((state: RootState) => state.cartReducer);
 
   useEffect(() => {
     if (cartItems) {
-      cartItems.map((item) => console.log(item));
+      let cardsObject: any = {};
+      cartItems.map((item) => {
+        const id = item[1];
+        if (cardsObject[id]) {
+          const updatedValue = (cardsObject[id].amount += 1);
+          cardsObject[id] = { item, amount: updatedValue };
+        } else {
+          cardsObject[id] = { item, amount: 1 };
+        }
+      });
+      setCards(cardsObject);
     }
   }, [cartItems]);
 
   return (
     <Container>
-      {cartItems.map((item) => {
-        return <CartCard name={item[0]} />;
+      {Object.keys(cards).map((key) => {
+        console.log(cards[key].item[0]);
+        return (
+          <CartCard name={cards[key].item[0]} amount={cards[key].amount} />
+        );
       })}
     </Container>
   );
