@@ -8,13 +8,14 @@ import { RootState } from "../redux/reducers/rootReducer";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
-  width: 100%;
+  width: 80%;
   height: 70vh;
+  margin-top: 10%;
   overflow: scroll;
   max-width: 1500px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   ::-webkit-scrollbar {
     display: none;

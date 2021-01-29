@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 import { CardSlider } from "../components/CardSlider";
+import { TotalCart } from "../components/TotalCart";
 
 const Container = styled.section`
   width: 90vw;
   max-width: 1000px;
   border-radius: 15px;
   height: 15vh;
-  min-height: 150px;
+  position: relative;
+  min-height: 120px;
+  margin-top: 15px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -21,6 +24,7 @@ export const ShoppingCartContainer = () => {
   return (
     <Container>
       <CardSlider />
+      <TotalCart />
     </Container>
   );
 };

@@ -36,8 +36,11 @@ const CustomCard = styled(Card)`
   border-radius: 10px;
 `;
 
-const CustomTypography = styled.h4`
-  font-size: clamp(15px, 0.4vw, 20px);
+const CustomTypography = styled.p`
+  font-size: clamp(11px, 0.4vw, 20px);
+  text-align: center;
+  display: flex;
+  justify-content: center;
 `;
 
 interface props {

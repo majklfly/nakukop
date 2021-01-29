@@ -5,12 +5,13 @@ import styled from "styled-components";
 import { RootState } from "../redux/reducers/rootReducer";
 import { useSelector } from "react-redux";
 
-import { CartCard } from "./CartCard";
+import { CartCard } from "../components/CartCard";
 
 const Container = styled.div`
   width: 90%;
   height: 90%;
   display: flex;
+  position: relative;
   flex-direction: row;
   align-items: center;
   overflow: scroll;

@@ -10,7 +10,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action: PayloadAction<any>) {
       const data = action.payload;
-      const id = data.cartItems[1];
+      const id = data.cartItems[7];
       if (!state[id]) {
         state[id] = { items: data.cartItems, amount: 1 };
       } else {
@@ -20,9 +20,12 @@ const cartSlice = createSlice({
     },
     updateCart(state, action: PayloadAction<any>) {
       const data = action.payload;
-      const id = data.cartItems[1];
+      console.log("data", data);
+      const id = data.cartItems[7];
+      const value = data.cartItems[1];
       if (state[id]) {
         state[id].amount -= 1;
+        state.total -= value;
       }
     },
   },
