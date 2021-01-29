@@ -44,6 +44,7 @@ export const CardSlider: React.FC<props> = () => {
   const { cartItems } = useSelector((state: RootState) => state.cartReducer);
 
   useEffect(() => {
+    // maping over redux store, creating a object of inuque objects and amount, updading state with new object
     if (cartItems) {
       let cardsObject: any = {};
       cartItems.map((item) => {
