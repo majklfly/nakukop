@@ -52,9 +52,11 @@ export const CardSlider: React.FC<props> = () => {
 
   return (
     <Container>
-      {cards.map((item) => {
+      {cards.map((item, index) => {
         if (item.items && item.amount > 0) {
-          return <CartCard item={item.items} amount={item.amount} />;
+          return (
+            <CartCard item={item.items} amount={item.amount} key={index} />
+          );
         }
       })}
     </Container>

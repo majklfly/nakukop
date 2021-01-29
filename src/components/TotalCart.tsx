@@ -18,7 +18,7 @@ export const TotalCart: React.FC<props> = (props) => {
 
   return (
     <Container>
-      <h1>Total: {total} ₽</h1>
+      <h1>Total: {total > 0 ? total : 0} ₽</h1>
     </Container>
   );
 };

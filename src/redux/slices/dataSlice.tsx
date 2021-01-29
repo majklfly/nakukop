@@ -8,10 +8,12 @@ const dataSlice = createSlice({
   reducers: {
     getData(state: any, action: PayloadAction<any>) {
       const data = action.payload;
-      data.data.Value.Goods.forEach((item: any) => {
-        const id = item.T;
-        state[id] = item;
-      });
+      if (data.copy.Value) {
+        data.copy.Value.Goods.forEach((item: any) => {
+          const id = item.T;
+          state[id] = item;
+        });
+      }
     },
     updateData(state, action: PayloadAction<any>) {
       const info = action.payload;

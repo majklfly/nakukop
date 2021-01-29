@@ -20,7 +20,6 @@ const cartSlice = createSlice({
     },
     updateCart(state, action: PayloadAction<any>) {
       const data = action.payload;
-      console.log("data", data);
       const id = data.cartItems[7];
       const value = data.cartItems[1];
       if (state[id]) {

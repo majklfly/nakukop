@@ -11,6 +11,9 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/slices/cartSlice";
 import { updateData } from "../redux/slices/dataSlice";
 
+import { RootState } from "../redux/reducers/rootReducer";
+import { useSelector } from "react-redux";
+
 const MainContainer = styled(List)`
   width: 100%;
 `;
@@ -32,6 +35,17 @@ interface props {
 
 export const CustomList: React.FC<props> = ({ data, mapping }) => {
   const [items, setItems] = useState<any[][]>([]);
+  const [colors, setColors] = useState<string[]>([]);
+  const state = useSelector((state: RootState) => state.dataReducer);
+
+  useEffect(() => {
+    setColors([]);
+    items.forEach((item) => {
+      let color: string = "";
+      state[item[7]].C > item[1] ? (color = "red") : (color = "green");
+      setColors((prev) => [...prev, color]);
+    });
+  }, [state]);
 
   const dispatch = useDispatch();
 
@@ -70,12 +84,14 @@ export const CustomList: React.FC<props> = ({ data, mapping }) => {
   return (
     <MainContainer aria-label="goods for sale">
       {items &&
-        items.map((item) => {
+        items.map((item, index) => {
           return (
             <ListItem button onClick={() => add(item)}>
               <ListItemIcon>{item[2]} x</ListItemIcon>
               <ListItemText primary={item[0]} />
-              <ListItemSecondaryAction>{item[1]} ₽</ListItemSecondaryAction>
+              <ListItemSecondaryAction style={{ color: colors[index] }}>
+                {item[1]} ₽
+              </ListItemSecondaryAction>
             </ListItem>
           );
         })}
